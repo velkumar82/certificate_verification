@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request For Education Details — COE</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark" style="background: linear-gradient(135deg, #2b3a42, #1f4e5f);">COE</div>
+    <div>
+      COE Dashboard
+      <span class="sub" id="welcome-name">Verifier</span>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <a href="/coe/dashboard.html">← Back to Dashboard</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <div>
+      <h1>Request For Education Details</h1>
+      <p id="reg-subtitle">Loading request…</p>
+    </div>
+  </div>
+
+  <div id="alert-box"></div>
+
+  <div id="content" class="hidden">
+
+    <!-- Section: applicant submission (read-only) + documents -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Applicant Submission</h2>
+        <p>As submitted by the applicant, including their registered organization</p>
+      </div>
+      <div class="kv-grid" id="applicant-submission"></div>
+      <div class="btn-row">
+        <a href="#" id="certificate-file-link" class="btn btn-accent btn-sm" target="_blank">Download Certificate</a>
+        <a href="#" id="payment-screenshot-link" class="btn btn-secondary btn-sm" target="_blank">Download Payment Screenshot</a>
+      </div>
+    </div>
+
+    <!-- Section A: Verification information -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Verification Information</h2>
+        <p>Enter verifier and confirmation details</p>
+      </div>
+      <form id="verify-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="verifier_name">Verifier Name *</label>
+            <input type="text" id="verifier_name" name="verifier_name" required>
+          </div>
+          <div class="field">
+            <label for="designation_department">Designation &amp; Dept.</label>
+            <input type="text" id="designation_department" name="designation_department" placeholder="e.g. Controller of Examinations, Examination Department">
+          </div>
+          <div class="field">
+            <label for="confirmation_date">Date of Confirmation *</label>
+            <input type="date" id="confirmation_date" name="confirmation_date" required>
+          </div>
+          <div class="field">
+            <label for="contact_details">Contact Details</label>
+            <input type="text" id="contact_details" name="contact_details" placeholder="Phone / Email / Official Contact">
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Applicant education particulars, entered by the COE -->
+        <span class="tag-section">Applicant's Education Details (entered against official record)</span>
+        <div class="form-grid">
+          <div class="field">
+            <label for="father_name">Father Name</label>
+            <input type="text" id="father_name" name="father_name">
+          </div>
+          <div class="field">
+            <label for="department">Department</label>
+            <input type="text" id="department" name="department" placeholder="e.g. Computer Science & Engineering">
+          </div>
+          <div class="field">
+            <label for="college_name">College Name</label>
+            <input type="text" id="college_name" name="college_name" placeholder="e.g. 9210 - Nadar Saraswathi College of Engineering and Technology">
+          </div>
+          <div class="field">
+            <label for="study_mode">Study Mode</label>
+            <select id="study_mode" name="study_mode">
+              <option value="">Select…</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Distance Education">Distance Education</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cgpa">CGPA</label>
+            <input type="text" id="cgpa" name="cgpa" placeholder="e.g. 8.2">
+          </div>
+          <div class="field">
+            <label for="division">Division</label>
+            <input type="text" id="division" name="division" placeholder="e.g. First Class">
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <span class="tag-section">Feedback</span>
+        <div class="field">
+          <label for="feedback">Feedback / Confirmation Notes</label>
+          <textarea id="feedback" name="feedback" placeholder="e.g. The education details have been verified against institutional records."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Verification Status *</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="verification_status" value="Verified" required> Verified
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="verification_status" value="Rejected" required> Rejected
+            </label>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="btn btn-primary" id="submit-verify-btn">Submit Verification</button>
+          <a href="/coe/dashboard.html" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Already-verified view -->
+  <div id="already-verified" class="card hidden">
+    <div class="card-header">
+      <h2>Verification Complete</h2>
+      <p>This request has already been processed</p>
+    </div>
+    <div class="kv-grid" id="verified-summary"></div>
+    <div class="btn-row">
+      <a href="#" id="download-pdf-link" class="btn btn-accent" target="_blank">Download Verification PDF</a>
+      <a href="#" id="verified-certificate-link" class="btn btn-secondary" target="_blank">Download Certificate</a>
+      <a href="#" id="verified-payment-link" class="btn btn-secondary" target="_blank">Download Payment Screenshot</a>
+      <a href="/coe/dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/coe/request.js"></script>
+</body>
+</html>

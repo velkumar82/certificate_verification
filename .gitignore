@@ -1,0 +1,10 @@
+node_modules/
+.env
+uploads/certificates/*
+uploads/payments/*
+uploads/verification-pdfs/*
+!uploads/certificates/.gitkeep
+!uploads/payments/.gitkeep
+!uploads/verification-pdfs/.gitkeep
+*.log
+.DS_Store

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Certificate Verification Portal</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">CV</div>
+    <div>
+      Certificate Verification Portal
+      <span class="sub">Applicant Access</span>
+    </div>
+  </div>
+</div>
+
+<div class="container-narrow">
+  <div class="card">
+    <div class="card-header">
+      <h2>Sign in</h2>
+      <p>Access your certificate verification requests</p>
+    </div>
+
+    <div id="alert-box"></div>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Sign In</button>
+    </form>
+
+    <p style="text-align:center; margin-top:18px; font-size:13.5px;">
+      New here? <a href="/register.html">Create an account</a>
+    </p>
+  </div>
+  <p class="footer-note">Nadar Saraswathi College of Engineering and Technology</p>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

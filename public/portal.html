@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portal — Certificate Verification Portal</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">CV</div>
+    <div>
+      Certificate Verification Portal
+      <span class="sub" id="welcome-name">Applicant</span>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-secondary btn-sm" id="logout-btn">Log Out</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <div>
+      <h1>My Verification Requests</h1>
+      <p>Track existing requests or submit a new certificate for COE verification</p>
+    </div>
+    <button class="btn btn-primary" id="new-request-btn">+ New Verification Request</button>
+  </div>
+
+  <div id="alert-box"></div>
+
+  <div class="stat-row" id="stat-row"></div>
+
+  <!-- Requests list -->
+  <div class="card" id="requests-card">
+    <div class="card-header">
+      <h2>Requests</h2>
+      <p>Feedback from the COE appears here once your request has been reviewed</p>
+    </div>
+    <div class="table-wrap">
+      <table id="requests-table">
+        <thead>
+          <tr>
+            <th>Register No.</th>
+            <th>Student Name</th>
+            <th>Year of Passing</th>
+            <th>Submitted</th>
+            <th>Status</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody id="requests-tbody"></tbody>
+      </table>
+    </div>
+    <div id="empty-state" class="empty-state hidden">
+      <div class="icon">📄</div>
+      <h3>No requests yet</h3>
+      <p>Submit your first certificate verification request to get started.</p>
+    </div>
+  </div>
+
+  <!-- New request form (hidden by default) -->
+  <div class="card hidden" id="new-request-card">
+    <div class="card-header">
+      <h2>New Certificate Verification Request</h2>
+      <p>The COE will fill in and confirm your full education record. You only need to provide the basics below.</p>
+    </div>
+
+    <div id="form-alert-box"></div>
+
+    <form id="submit-form">
+      <span class="tag-section">Applicant Details</span>
+      <div class="form-grid">
+        <div class="field">
+          <label for="register_number">Register Number *</label>
+          <input type="text" id="register_number" name="register_number" required>
+        </div>
+        <div class="field">
+          <label for="student_name">Student Name *</label>
+          <input type="text" id="student_name" name="student_name" required>
+        </div>
+        <div class="field">
+          <label for="year_of_passing">Year of Passing *</label>
+          <input type="number" id="year_of_passing" name="year_of_passing" min="1980" max="2100" required>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <span class="tag-section">Payment — ₹200 Verification Fee</span>
+      <div class="form-grid">
+        <div class="field full">
+          <img src="/images/payment-qr.png" alt="Payment QR code" style="width:150px; height:150px; border:1px solid var(--line); border-radius:8px; padding:8px; background:#fff;" onerror="this.style.display='none'">
+          <div class="file-note">Scan the QR code, pay ₹200, then enter your Payment ID and upload a screenshot of the payment confirmation.</div>
+        </div>
+        <div class="field">
+          <label for="payment_id">Payment ID *</label>
+          <input type="text" id="payment_id" name="payment_id" required>
+        </div>
+        <div class="field">
+          <label for="payment_screenshot">Payment Screenshot *</label>
+          <input type="file" id="payment_screenshot" name="payment_screenshot" accept=".jpg,.jpeg,.png,.webp,.pdf" required>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <span class="tag-section">Certificate Upload</span>
+      <div class="form-grid">
+        <div class="field full">
+          <label for="certificate_file">Certificate File *</label>
+          <input type="file" id="certificate_file" name="certificate_file" accept=".jpg,.jpeg,.png,.webp,.pdf" required>
+          <div class="file-note">PDF, JPG, PNG or WEBP. Maximum 5 MB.</div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn btn-primary" id="submit-request-btn">Submit Verification Request</button>
+        <button type="button" class="btn btn-secondary" id="cancel-request-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/portal.js"></script>
+</body>
+</html>
